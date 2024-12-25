@@ -217,3 +217,29 @@
   @apply cursor-default select-none py-2 pl-10 pr-4;
 }
 /* END: search manufacturer styles */
+
+
+/* Custom scrollbar styling */
+.scroll-container {
+  overflow-y: auto;
+  max-height: 400px; /* Adjust as per your requirement */
+}
+
+.scroll-container::-webkit-scrollbar {
+  width: 10px;
+  /* Width of the scrollbar */
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: #4B72FF; /* Track color */
+ 
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #4B72FF; /* Thumb color */
+; /* Rounded ends */
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #476fff; /* Darker blue on hover */
+}
