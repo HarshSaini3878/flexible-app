@@ -4,6 +4,8 @@ import { fuels, yearsOfProduction } from "../constants/index";
 import Hero from "@/components/Hero";
 import CustomFilter from "@/components/CustomFilter";
 import SearchBar from "@/components/Searchbar";
+import ShowMore from "@/components/ShowMore";
+import CarCard from "@/components/CarCard";
 // import { CarCard, ShowMore, SearchBar, CustomFilter, Hero } from "../components";
 
 export default async function Home({ searchParams }: HomeProps) {
@@ -37,16 +39,16 @@ export default async function Home({ searchParams }: HomeProps) {
 
         {!isDataEmpty ? (
           <section>
-            {/* <div className='home__cars-wrapper'>
+            <div className='home__cars-wrapper'>
               {allCars?.map((car) => (
-                // <CarCard car={car} />
+                <CarCard car={car} />
               ))}
-            </div> */}
+            </div>
 
-            {/* <ShowMore
+            <ShowMore
               pageNumber={(searchParams.limit || 10) / 10}
               isNext={(searchParams.limit || 10) > allCars.length}
-            /> */}
+            />
           </section>
         ) : (
           <div className='home__error-container'>
