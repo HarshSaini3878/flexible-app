@@ -1,15 +1,11 @@
 import { fetchCars } from "../utils/index";
 import { HomeProps } from "../types/index";
 import { fuels, yearsOfProduction } from "../constants/index";
-import Hero from "@/components/Hero";
-import CustomFilter from "@/components/CustomFilter";
-import SearchBar from "@/components/Searchbar";
-import ShowMore from "@/components/ShowMore";
-import CarCard from "@/components/CarCard";
-// import { CarCard, ShowMore, SearchBar, CustomFilter, Hero } from "../components";
+import { CarCard, CustomFilter, Hero, SearchBar, ShowMore } from "@/components";
+
 
 export default async function Home({ searchParams }: HomeProps) {
-    const allCars = await fetchCars({
+  const allCars = await fetchCars({
     manufacturer: searchParams.manufacturer || "",
     year: searchParams.year || 2022,
     fuel: searchParams.fuel || "",
@@ -20,8 +16,9 @@ export default async function Home({ searchParams }: HomeProps) {
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
 
   return (
-    <main className='overflow-hidden '>
+    <main className='overflow-hidden'>
       <Hero />
+
       <div className='mt-12 padding-x padding-y max-width' id='discover'>
         <div className='home__text-container'>
           <h1 className='text-4xl font-extrabold'>Car Catalogue</h1>
@@ -53,11 +50,13 @@ export default async function Home({ searchParams }: HomeProps) {
         ) : (
           <div className='home__error-container'>
             <h2 className='text-black text-xl font-bold'>Oops, no results</h2>
-            <p>{allCars?.message}</p>
+            {allCars?.map((car, index) => (
+  <CarCard key={car.id || index} car={car} />
+))}
+
           </div>
         )}
       </div>
-      
     </main>
   );
 }
